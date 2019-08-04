@@ -12,18 +12,10 @@ class Micropost extends Model
     {
         return $this->belongsTo(User::class);
     }
-}
-
-class User extends Authenticatable
-{
-    // ...（fillable など省略）...
     
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
-    
-    public function microposts()
+    public function favorite_users()
     {
-        return $this->hasMany(Micropost::class);
+        return $this->belongsToMany(User::class);
     }
 }
+
